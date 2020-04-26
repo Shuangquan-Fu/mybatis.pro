@@ -3,22 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
-
-<!--    加载连接数据库的变量-->
-    <properties src="db.properties"></properties>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
+            <!-- 创建数据连接池-->
             <dataSource type="POOLED">
-                <property name="driver" value="${driver}"/>
-                <property name="url" value="${url}"/>
-                <property name="username" value="${username}"/>
-                <property name="password" value="${password}"/>
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mydb"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123"/>
             </dataSource>
         </environment>
     </environments>
+
+
     <mappers>
-        <mapper resource="org/mybatis/example/BlogMapper.xml"/>
+        <!--        <mapper resource="org/mybatis/example/BlogMapper.xml"/>-->
+        <mapper resource="mapper/usersMapper.xml"></mapper>
     </mappers>
 </configuration>
