@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.List;
 
 public class UsersDAO {
-    private SqlSession sqlSession = SqlSessionFactoryUtils.getSqlSessionFactory().openSession();
+    private SqlSession sqlSession;
     public List<Users> list;
     public Users Users;
 
@@ -36,7 +36,6 @@ public class UsersDAO {
         } finally {
             sqlSession.close();
         }
-
         return Users;
     }
 }

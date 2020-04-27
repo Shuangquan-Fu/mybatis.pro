@@ -59,7 +59,7 @@
                     <td>删除</td>
                 </c:if>
                 <td>
-                    <a href="">正常</a>
+                    <a href="${pageContext.request.contextPath}/detail?id=${user.id}">查看</a>
                     <a href="">修改</a>
                     <a href="">删除</a>
                 </td>
