@@ -6,10 +6,29 @@
 命名空间默认情况下 使用我们当前操作的实体类的全路径
 -->
 <mapper namespace="com.damu.entity.Users">
-     <select id="usersList" resultType="com.damu.entity.Users">
+     <select id="findUsers" resultType="com.damu.entity.Users">
          select * from users
+         <if test="id != null">
+             where id = #{id}
+         </if>
+
+<!--  出现问题的原因 是这里的id 直接从 users 对象中查找变量       <if test="id != null">-->
+<!--             where id = #{id}-->
+<!--         </if>-->
      </select>
-    <select id="findById" resultType="com.damu.entity.Users">
-        select * from users where id = #{id}
-    </select>
+<!--    <select id="findById" resultType="com.damu.entity.Users">-->
+<!--        select * from users where id = #{id}-->
+<!--    </select>-->
+<!--
+    因mapper是根据 数据库中的字段和 users 中的 field 进行一一对应设置 如果不一样 我们就要进行 resultMap 取代 result Type
+    column 是数据库中的字段名称 property 是实体类中的属性名称 resultType 换成 resultMap = "id(resultmap id)"
+     <resultMap id="findUsers" type="com.damu.entity.Users">
+        <result column="username"  property="name" ></result>
+    </resultMap>
+-->
+<!--    如何添加数据到数据库-->
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+        insert into users(username,userpass,nickname,age,gender,email,phone,createTime,updateTime,lastlogin,userstatus,remark)
+        values(#{username},#{uerpass},#{nickname},#{age},#{gender},#{email},#{phone},#{createTime},#{updateTime},#{lastlogin},#{userstatus},#{remark})
+    </insert>
 </mapper>

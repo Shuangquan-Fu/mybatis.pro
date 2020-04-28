@@ -16,6 +16,28 @@ public class Users {
     private Date lastlogin;
     private Integer userStatus;
     private String remark;
+    public Users(){
+
+    }
+
+    public Users(String username, String userpass, String nickname, Integer age, String gender, String phone, String email, Date createTime, Date updateTime, Date lastlogin, Integer userStatus) {
+        this.username = username;
+        this.userpass = userpass;
+        this.nickname = nickname;
+        this.age = age;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+        this.lastlogin = lastlogin;
+        this.userStatus = userStatus;
+
+    }
+
+    public Users(Integer id){
+        this.id = id;
+    }
     public Integer getId() {
         return id;
     }

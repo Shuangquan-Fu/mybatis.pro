@@ -18,7 +18,7 @@ public class UsersDAO {
     //findAll users form dataset
     public List<Users> findAll(){
         try {
-            list = getSqlSession().selectList("usersList");
+            list = getSqlSession().selectList("findUsers");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -30,7 +30,19 @@ public class UsersDAO {
     //find single user from database
     public Users findById(Integer id){
         try {
-            Users = getSqlSession().selectOne("findById",id);
+            Users = getSqlSession().selectOne("findUsers",new Users(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+        return Users;
+    }
+    public Users addUser(Users user){
+        try {
+            // 返回值 是insert 执行过程中影响的行数
+            getSqlSession().insert("addUser",user);
+            sqlSession.commit();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
