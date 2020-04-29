@@ -48,6 +48,32 @@ public class UsersDAO {
         } finally {
             sqlSession.close();
         }
-        return Users;
+        return user;
+    }
+
+    public Users updateUser(Users user){
+        try {
+            // 返回值 是insert 执行过程中影响的行数
+            getSqlSession().update("updateUser",user);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+        return user;
+    }
+
+    public void delUser(Integer id){
+        try {
+            // 返回值 是insert 执行过程中影响的行数
+            getSqlSession().delete("delUser",id);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+
     }
 }
