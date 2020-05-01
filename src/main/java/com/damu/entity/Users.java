@@ -1,6 +1,8 @@
 package com.damu.entity;
 
 import java.util.Date;
+import java.util.List;
+
 //在普通的项目里面 resource : mybatis-config.xml   InputStream  sqlSessionFactory sqlSession
 public class Users {
     private Integer id;
@@ -16,6 +18,16 @@ public class Users {
     private Date lastlogin;
     private Integer userStatus;
     private String remark;
+    private List<Address> addresses;
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+
 
     public Users(Integer id, String nickname, Integer age, String gender, String phone, String email, Date updateTime, String remark) {
         this.id = id;
@@ -154,6 +166,7 @@ public class Users {
         this.remark = remark;
     }
 
+
     @Override
     public String toString() {
         return "Users{" +
@@ -170,6 +183,7 @@ public class Users {
                 ", lastlogin=" + lastlogin +
                 ", userStatus=" + userStatus +
                 ", remark='" + remark + '\'' +
+                ", addresses=" + addresses +
                 '}';
     }
 }

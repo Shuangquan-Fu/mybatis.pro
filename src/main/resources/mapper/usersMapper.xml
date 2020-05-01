@@ -6,7 +6,7 @@
 命名空间默认情况下 使用我们当前操作的实体类的全路径
 -->
 <mapper namespace="com.damu.entity.Users">
-     <select id="findUsers" resultType="com.damu.entity.Users">
+     <select id="findUsers" resultMap="forUsers">
          select * from users
          <if test="id != null">
              where id = #{id}
@@ -19,6 +19,15 @@
 <!--    <select id="findById" resultType="com.damu.entity.Users">-->
 <!--        select * from users where id = #{id}-->
 <!--    </select>-->
+
+    <resultMap id="forUsers" type="com.damu.entity.Users">
+        <id property="id" column="id"></id>
+<!--        property 是user中得字段， colum 是 作为参数进行传递 ofType 返回得数据类型 select 是执行得语句-->
+        <collection property="addresses" column="id" ofType="com.damu.entity.Address" select="getAddress"></collection>
+    </resultMap>
+    <select id="getAddress" resultType="com.damu.entity.Address">
+        select * from address where userid = #{id}
+    </select>
 <!--
     因mapper是根据 数据库中的字段和 users 中的 field 进行一一对应设置 如果不一样 我们就要进行 resultMap 取代 result Type
     column 是数据库中的字段名称 property 是实体类中的属性名称 resultType 换成 resultMap = "id(resultmap id)"

@@ -26,7 +26,7 @@
         <div class="jumbotron">
             <h1>Mybatis基础入门课程</h1>
             <p>通过一个项目来完成基础部分的学习</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">查看更多请看慕课网</a></p>
+            <p><a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/index" role="button">查看更多请看慕课网</a></p>
             <p><a class="btn btn-primary btn-lg" href=${pageContext.request.contextPath}/addusers.jsp role="button">新增用户</a></p>
         </div>
     </div>
